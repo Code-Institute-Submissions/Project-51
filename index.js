@@ -1,23 +1,27 @@
+/*adding the eventlister for the domconent since its needed as i put my
+jscript in the header */
+/* used the quearyselector all as it returns the item in a node which is similar to an array
+which is why i wrapped an array around it */
+
 window.addEventListener('DOMContentLoaded', () => {
     const boxes = Array.from(document.querySelectorAll('.box'));
     const playerDisplay = document.querySelector('.display-player');
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
-
+    
+/* made and array with 9 emty strings which will represent the boxes for the game.
+stored the current player and wheater the game will be active or not. */
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
-
+/* these variable represent the 3 states the game will end up in*/
     const PLAYERX_WON = 'PLAYERX_WON';
     const PLAYERO_WON = 'PLAYERO_WON';
     const TIE = 'TIE';
 
 
     /*
-        Indexes within the board
-        [0] [1] [2]
-        [3] [4] [5]
-        [6] [7] [8]
+       repesents all the possible win conditions e.g 0,1,2 would be the 1st line you could ge to win
     */
 
     const winningConditions = [
@@ -56,7 +60,8 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!board.includes(''))
         announce(TIE);
     }
-
+/*this is used to tell the users who has won or if the game is a tie the hide claas is remvoed to show the users the 
+announcement */
     const announce = (type) => {
         switch(type){
             case PLAYERO_WON:
@@ -82,14 +87,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const updateBoard =  (index) => {
         board[index] = currentPlayer;
     }
-
+/*changes player by chaning class show wheather is 0 or x when the player changes the inner text changes to match 
+thus changing player*/ 
     const changePlayer = () => {
         playerDisplay.classList.remove(`player${currentPlayer}`);
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         playerDisplay.innerText = currentPlayer;
         playerDisplay.classList.add(`player${currentPlayer}`);
     }
-
+/*this function reprsents a turn in the game, it checks if the choice is a valid action
+and if the game is active if these condition are met the inntertext will be the current player
+which will be based on the class. the board updates then goes back to validation and see if the game can still
+continue thus chaning player */
     const userAction = (box, index) => {
         if(isValidAction(box) && isGameActive) {
             box.innerText = currentPlayer;
@@ -115,7 +124,9 @@ window.addEventListener('DOMContentLoaded', () => {
             box.classList.remove('playerO');
         });
     }
-
+    
+    
+/*attaching the index to the box so when people clicl on the box there is an interaction to that specific box*/
     boxes.forEach( (box, index) => {
         box.addEventListener('click', () => userAction(box, index));
     });

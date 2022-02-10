@@ -10,14 +10,14 @@ body {
     height: 100vh;
     min-height: auto;
 }
-
+/*This will show the heading of the game*/
 .heading {
     color: black;
     text-align: center;
     font-size: 40px;
     margin-top: 1px;
 }
-
+/*Will show the player who will be playing next  */
 .display {
     color: black;
     font-size: 32px;
@@ -25,11 +25,11 @@ body {
     margin-top: 1em;
     margin-bottom: 1em;
 }
-
+/*this will hid some of the js functions*/
 .hide {
     display: none;
 }
-
+/*the grid will be the main borad of the game*/
 .grid {
     margin: 0 auto;
     display: grid;
@@ -37,7 +37,7 @@ body {
     grid-template-rows: 34% 34% 34%;
     max-width: 300px;
 }
-
+/*the boxes are where the O's and X's will be put into */
 .box {
     border: 1px solid black;
     min-width: 100px;
@@ -48,7 +48,7 @@ body {
     font-size: 50px;
     cursor: pointer;
 }
-
+/*helps identify different players*/
 .playerO {
     color: blue;
 }
@@ -64,7 +64,7 @@ body {
     align-items: center;
     margin-top: 1em;
 }
-
+/*this will just be the restart button*/
 #reset {
     background-color: black;
     color: white;
@@ -75,14 +75,4 @@ body {
     cursor: pointer;
     margin-bottom: 10px;
 }
-/* 
-I was going to try do a win and lose counter but wasnt sure if i was going to make the code
-.score-area{
-border: none;
-padding: 5px;
-background-color: black;
-margin-left: 20px;
-border-radius: 10px;
-color: white;
-font-size: 16px;
-} */
+
