@@ -7,10 +7,11 @@ body {
 .background {
     background-color: rgb(35, 159, 190);
     padding-top: 1px;
-    
+    height: 100vh;
+    min-height: auto;
 }
 
-.title {
+.heading {
     color: black;
     text-align: center;
     font-size: 40px;
@@ -29,7 +30,7 @@ body {
     display: none;
 }
 
-.container {
+.grid {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 34% 34% 34%;
@@ -37,7 +38,7 @@ body {
     max-width: 300px;
 }
 
-.tile {
+.box {
     border: 1px solid black;
     min-width: 100px;
     min-height: 100px;
@@ -56,7 +57,7 @@ body {
     color: blueviolet;
 }
 
-.controls {
+.menu {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -72,6 +73,7 @@ body {
     border: none;
     font-size: 32px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 /* 
 I was going to try do a win and lose counter but wasnt sure if i was going to make the code
