@@ -34,7 +34,9 @@ stored the current player and wheater the game will be active or not. */
         [0, 4, 8],
         [2, 4, 6]
     ];
-
+/*this is the win conditions array, if any of the 3 elements are an emty string(box) then
+it means the win condition has no been met thus contining the game 
+if they become equal it leave the loop aunnouncing the tie  */
     function handleResultValidation() {
         let roundWon = false;
         for (let i = 0; i <= 7; i++) {
@@ -75,7 +77,7 @@ announcement */
         }
         announcer.classList.remove('hide');
     };
-
+/*if the box if ful the then the function will come back as fasle otherwise it wll come back as false*/
     const isValidAction = (box) => {
         if (box.innerText === 'X' || box.innerText === 'O'){
             return false;
@@ -108,7 +110,7 @@ continue thus chaning player */
             changePlayer();
         }
     }
-    
+    /*used to reset the game and the board*/
     const resetBoard = () => {
         board = ['', '', '', '', '', '', '', '', ''];
         isGameActive = true;
