@@ -6,7 +6,6 @@ body {
 
 .background {
     background-color: rgb(35, 159, 190);
-    height: 100vh;
     padding-top: 1px;
 }
 
@@ -71,6 +70,16 @@ body {
     border-radius: 8px;
     border: none;
     font-size: 32px;
-    margin-left: 16px;
     cursor: pointer;
 }
+/* 
+I was going to try do a win and lose counter but wasnt sure if i was going to make the code
+.score-area{
+border: none;
+padding: 5px;
+background-color: black;
+margin-left: 20px;
+border-radius: 10px;
+color: white;
+font-size: 16px;
+} */
