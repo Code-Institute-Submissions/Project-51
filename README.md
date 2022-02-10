@@ -8,4 +8,4 @@ The site tell which player either X or O to play and when they have won it annon
 going through the js i need to comment out nearly all the code so that i could understand it being able to do that help as it becomes systmatic and logical. 
 The website passes the JS, CSS and html checks with only minor warming on the Js and css its also very responsive being simplistic and is good on most devices. 
 
-I struggled the most when needing to wrap my head around the wincondition and the array as it factors in all the elements to achieve the win. i was able to get around it by researching about it using "MDN WebDocs" and "freecodecamp".
+I struggled the most when needing to wrap my head around the wincondition and the array as it factors in all the elements to achieve the win. i was able to understand it more by researching about it using "MDN WebDocs" and "freecodecamp".
