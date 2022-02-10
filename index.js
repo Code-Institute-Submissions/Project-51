@@ -13,11 +13,11 @@ window.addEventListener('DOMContentLoaded', () => {
 stored the current player and wheater the game will be active or not. */
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
-    let isGameActive = true;
+    let isGameLive = true;
 /* these variable represent the 3 states the game will end up in*/
     const PLAYERX_WON = 'PLAYERX_WON';
     const PLAYERO_WON = 'PLAYERO_WON';
-    const TIE = 'TIE';
+    const DRAW = 'DRAW';
 
 
     /*
@@ -36,9 +36,9 @@ stored the current player and wheater the game will be active or not. */
     ];
 /*this is the win conditions array, if any of the 3 elements are an emty string(box) then
 it means the win condition has no been met thus contining the game 
-if they become equal it leave the loop aunnouncing the tie  */
-    function handleResultValidation() {
-        let roundWon = false;
+if they become equal it leave the loop aunnouncing the DRAW  */
+    function ResultValidation() {
+        let winRound = false;
         for (let i = 0; i <= 7; i++) {
             const winCondition = winningConditions[i];
             const a = board[winCondition[0]];
@@ -48,21 +48,21 @@ if they become equal it leave the loop aunnouncing the tie  */
                 continue;
             }
             if (a === b && b === c) {
-                roundWon = true;
+                winRound = true;
                 break;
             }
         }
 
-    if (roundWon) {
+    if (winRound) {
             announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-            isGameActive = false;
+            isGameLive = false;
             return;
         }
 
     if (!board.includes(''))
-        announce(TIE);
+        announce(DRAW);
     }
-/*this is used to tell the users who has won or if the game is a tie the hide claas is remvoed to show the users the 
+/*this is used to tell the users who has won or if the game is a DRAW the hide claas is remvoed to show the users the 
 announcement */
     const announce = (type) => {
         switch(type){
@@ -72,8 +72,8 @@ announcement */
             case PLAYERX_WON:
                 announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
                 break;
-            case TIE:
-                announcer.innerText = 'Tie';
+            case DRAW:
+                announcer.innerText = 'DRAW';
         }
         announcer.classList.remove('hide');
     };
@@ -102,18 +102,18 @@ and if the game is active if these condition are met the inntertext will be the 
 which will be based on the class. the board updates then goes back to validation and see if the game can still
 continue thus chaning player */
     const userAction = (box, index) => {
-        if(isValidAction(box) && isGameActive) {
+        if(isValidAction(box) && isGameLive) {
             box.innerText = currentPlayer;
             box.classList.add(`player${currentPlayer}`);
             updateBoard(index);
-            handleResultValidation();
+            ResultValidation();
             changePlayer();
         }
     }
     /*used to reset the game and the board*/
-    const resetBoard = () => {
+    const restartGame = () => {
         board = ['', '', '', '', '', '', '', '', ''];
-        isGameActive = true;
+        isGameLive = true;
         announcer.classList.add('hide');
 
         if (currentPlayer === 'O') {
@@ -133,5 +133,5 @@ continue thus chaning player */
         box.addEventListener('click', () => userAction(box, index));
     });
 
-    resetButton.addEventListener('click', resetBoard);
+    resetButton.addEventListener('click', restartGame);
 });
